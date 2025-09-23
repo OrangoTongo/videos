@@ -36,44 +36,24 @@ h2 {
   text-align: center;
   margin: 1.5rem 0;
   font-size: 2rem;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-/* ============================
-   Botões de navegação
-============================ */
-.button-nav {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-}
-
-.button-nav button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 6px;
-  background-color: #1f1f1f;
-  color: #ffffff;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: color 0.3s ease;
 }
 
-.button-nav button:hover {
-  background-color: #007bff;
-  transform: translateY(-2px);
+h2:hover {
+  color: #007bff;
 }
 
 /* ============================
    Botão Voltar à Home
 ============================ */
+.voltar-container {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
 .botao-voltar {
-  display: inline-block;
-  margin: 1rem 0;
   padding: 0.8rem 1.5rem;
   border-radius: 6px;
   background-color: #1f1f1f;
@@ -90,52 +70,32 @@ h3 {
 }
 
 /* ============================
-   Grid de cards
+   Cards de séries e episódios
 ============================ */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1rem;
-  padding: 0 2rem;
-  margin-bottom: 2rem;
-}
-
-/* ============================
-   Card de filmes / séries
-============================ */
-.card {
+.series-card {
   background-color: #1f1f1f;
-  padding: 1rem;
   border-radius: 10px;
-  margin: 1rem 0;
-  text-align: center;
+  margin: 1rem auto;
+  max-width: 800px;
+  padding: 1rem 2rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.series-card:hover {
+  transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+  cursor: pointer;
 }
 
-.card h3 {
-  margin-bottom: 0.8rem;
-  font-size: 1.1rem;
-  color: #ffffff;
+.episodes-list {
+  margin-top: 1rem;
+  padding-left: 1rem;
 }
 
-.card a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: #ffffff;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.card a:hover {
-  background-color: #0056b3;
+.episode-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
 }
 
 /* ============================
@@ -145,6 +105,7 @@ h3 {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  text-align: center;
 }
 
 /* ============================
@@ -159,15 +120,9 @@ h3 {
     font-size: 1.6rem;
   }
   
-  .grid-container {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    padding: 0 1rem;
-  }
-  
-  .button-nav {
-    flex-direction: column;
-    gap: 0.8rem;
-    margin: 1.5rem 0;
+  .series-card {
+    padding: 1rem;
+    margin: 1rem 0.5rem;
   }
 }
 
@@ -180,13 +135,16 @@ h3 {
     font-size: 1.2rem;
   }
   
-  .card a {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
-  }
-  
   .botao-voltar {
     padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .series-card {
+    padding: 0.8rem;
+  }
+  
+  .episode-item {
     font-size: 0.9rem;
   }
 }
