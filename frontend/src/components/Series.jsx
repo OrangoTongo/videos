@@ -33,6 +33,7 @@ export default function Series() {
 
   return (
     <div className="container">
+      <h1>Séries</h1>
       <div className="button-container">
         <button onClick={() => navigate("/")} className="botao-voltar">
           Voltar à Home

@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #121212; /* ou a cor que preferir */
+  background-color: #121212; /* fundo escuro */
 }
 
 .container {
@@ -52,6 +52,11 @@ body {
   list-style: none; /* 🔹 remove os pontos */
 }
 
+/* 🔹 Ajuste 2: séries com menos espaço nas laterais */
+.series-list {
+  padding: 0 10px;
+}
+
 /* Cards */
 .series-card, .card {
   display: flex;
@@ -60,7 +65,8 @@ body {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
-  min-height: 200px;
+  min-height: 220px;  /* 🔹 altura mínima padronizada */
+  height: 100%;       /* 🔹 todos os containers iguais */
   position: relative;
   overflow: hidden;
 }
