@@ -1,69 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { getSeries } from "../api"; // sua função que busca os dados da API
+import { useState, useEffect } from "react";
+import { getSeries } from "../api"; // sua função que busca /api/series
+import { useNavigate } from "react-router-dom";
 
-
-const Series = () => {
-  const [seriesData, setSeriesData] = useState([]);
-  const [openSeries, setOpenSeries] = useState(null); // qual série está aberta
+export default function Series() {
+  const [series, setSeries] = useState([]);
+  const [expandedFolders, setExpandedFolders] = useState({});
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchSeries() {
       try {
         const data = await getSeries();
-        setSeriesData(data);
+        setSeries(data);
       } catch (err) {
-        console.error("Erro ao buscar séries:", err);
+        console.error(err);
       }
     }
     fetchSeries();
   }, []);
 
-  // Agrupa episódios por série
-  const seriesGrouped = seriesData.reduce((acc, ep) => {
-    if (!acc[ep.title]) acc[ep.title] = [];
-    acc[ep.title].push(ep);
+  // Agrupa os episódios pelo fld_id (cada "série")
+  const groupedSeries = series.reduce((acc, ep) => {
+    if (!acc[ep.fld_id]) acc[ep.fld_id] = [];
+    acc[ep.fld_id].push(ep);
     return acc;
   }, {});
 
-  const handleToggleSeries = (title) => {
-    setOpenSeries(openSeries === title ? null : title);
+  const toggleFolder = (fld_id) => {
+    setExpandedFolders((prev) => ({
+      ...prev,
+      [fld_id]: !prev[fld_id],
+    }));
   };
 
   return (
     <div className="container">
-      <h1>Séries</h1>
-
       <div className="voltar-container">
-        <button onClick={() => (window.location.href = "/")}>Voltar à Home</button>
+        <button onClick={() => navigate("/")}>Voltar à Home</button>
       </div>
 
-      <div className="series-list">
-        {Object.keys(seriesGrouped).map((title) => (
-          <div key={title} className="series-card">
-            <h2
-              style={{ cursor: "pointer" }}
-              onClick={() => handleToggleSeries(title)}
-            >
-              {title}
-            </h2>
+      {Object.entries(groupedSeries).map(([fld_id, episodes]) => (
+        <div
+          key={fld_id}
+          className="series-card"
+        >
+          <h2 onClick={() => toggleFolder(fld_id)}>
+            Série {fld_id} ({episodes.length} episódios)
+          </h2>
 
-            {openSeries === title && (
-              <div className="episodes-grid">
-                {seriesGrouped[title].map((ep) => (
-                  <div key={ep.id} className="card">
-                    <h3>Episódio {ep.id}</h3>
-                    <a href={ep.link} target="_blank" rel="noopener noreferrer">
-                      Assistir
-                    </a>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+          {expandedFolders[fld_id] && (
+            <div className="episodes-list">
+              {episodes.map((ep) => (
+                <div key={ep.id} className="episode-item">
+                  {ep.title}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
     </div>
   );
-};
-
-export default Series;
+}
