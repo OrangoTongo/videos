@@ -1,28 +1,24 @@
-import { useEffect, useState } from "react";
-import { getSeries } from "../api";
+import React, { useEffect, useState } from "react";
+import CardItem from "../components/CardItem.jsx";
+import { getSeries } from "../api.js";
 
 export default function Series() {
   const [series, setSeries] = useState([]);
 
   useEffect(() => {
     getSeries()
-      .then(data => {
-        data.sort((a, b) => a.title.localeCompare(b.title)); 
-        setSeries(data);
-      })
+      .then(data => setSeries(data))
       .catch(err => console.error(err));
   }, []);
 
   return (
     <div>
       <h2>Séries</h2>
-      <ul>
+      <div className="grid-container">
         {series.map(s => (
-          <li key={s.file_code}>
-            <a href={s.link} target="_blank">{s.title}</a>
-          </li>
+          <CardItem key={s.id} title={s.title} link={s.link} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

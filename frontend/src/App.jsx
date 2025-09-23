@@ -1,21 +1,18 @@
-import { useState } from "react";
-import Home from "./components/Home";
-import Filmes from "./components/Filmes";
-import Series from "./components/Series";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Inicio from "./pages/Inicio.jsx";
+import Filmes from "./pages/Filmes.jsx";
+import Series from "./pages/Series.jsx";
 
 export default function App() {
-  const [page, setPage] = useState("home");
-
-  const renderPage = () => {
-    if (page === "filmes") return <Filmes />;
-    if (page === "series") return <Series />;
-    return <Home goToPage={setPage} />;
-  };
-
   return (
-    <div>
-      <h1>Meu Catálogo</h1>
-      {renderPage()}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Inicio />} />
+        <Route path="/filmes" element={<Filmes />} />
+        <Route path="/series" element={<Series />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

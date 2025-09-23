@@ -1,8 +1,11 @@
-export default function Home({ goToPage }) {
+import React from "react";
+import ButtonNav from "../components/ButtonNav.jsx";
+
+export default function Inicio() {
   return (
     <div>
-      <button onClick={() => goToPage("filmes")}>Filmes</button>
-      <button onClick={() => goToPage("series")}>Séries</button>
+      <h1>Bem-vindo!</h1>
+      <ButtonNav />
     </div>
   );
 }

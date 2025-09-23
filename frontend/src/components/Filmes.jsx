@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
-import { getFilmes } from "../api";
+import React, { useEffect, useState } from "react";
+import CardItem from "../components/CardItem.jsx";
+import { getFilmes } from "../api.js";
 
 export default function Filmes() {
   const [filmes, setFilmes] = useState([]);
@@ -13,13 +14,11 @@ export default function Filmes() {
   return (
     <div>
       <h2>Filmes</h2>
-      <ul>
+      <div className="grid-container">
         {filmes.map(f => (
-          <li key={f.file_code}>
-            <a href={f.link} target="_blank">{f.title}</a>
-          </li>
+          <CardItem key={f.id} title={f.title} link={f.link} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
