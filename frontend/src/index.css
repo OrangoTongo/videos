@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #121212; /* fundo escuro */
+  background-color: #121212; /* ou a cor que preferir */
 }
 
 .container {
@@ -52,7 +52,7 @@ body {
   list-style: none; /* 🔹 remove os pontos */
 }
 
-/* 🔹 Ajuste 2: séries com menos espaço nas laterais */
+/* 🔹 Ajuste: séries com menos espaço nas laterais */
 .series-list {
   padding: 0 10px;
 }
@@ -65,10 +65,16 @@ body {
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
-  min-height: 220px;  /* 🔹 altura mínima padronizada */
-  height: 100%;       /* 🔹 todos os containers iguais */
+  min-height: 200px;
   position: relative;
   overflow: hidden;
+}
+
+/* 🔹 Ajuste: filmes com largura uniforme */
+.lista-videos li,
+.card {
+  width: 100%;        /* ocupa toda a coluna do grid */
+  box-sizing: border-box;
 }
 
 /* Títulos */
