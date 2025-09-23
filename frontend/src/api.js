@@ -1,14 +1,16 @@
-const BASE_URL = 'https://videos-m0k8.onrender.com/'
+// API base URL: mesmo domínio
+const BASE_URL = "";
 
-
-export async function getFilmes() {
-  const res = await fetch(`${BASE_URL}/filmes`);
-  if (!res.ok) throw new Error("Erro ao buscar filmes");
+// Buscar séries
+export async function getSeries() {
+  const res = await fetch(`${BASE_URL}/api/series`);
+  if (!res.ok) throw new Error("Erro ao buscar séries");
   return res.json();
 }
 
-export async function getSeries() {
-  const res = await fetch(`${BASE_URL}/series`);
-  if (!res.ok) throw new Error("Erro ao buscar séries");
+// Buscar filmes
+export async function getFilmes() {
+  const res = await fetch(`${BASE_URL}/api/filmes`);
+  if (!res.ok) throw new Error("Erro ao buscar filmes");
   return res.json();
 }
