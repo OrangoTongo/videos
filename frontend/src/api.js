@@ -1,4 +1,4 @@
-const BASE_URL = process.env.SITE_URL;
+const BASE_URL = 'https://videos-m0k8.onrender.com/'
 
 
 export async function getFilmes() {
