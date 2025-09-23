@@ -28,14 +28,16 @@ export default function Series() {
 
   return (
     <div className="container">
-      <div className="voltar-container">
-        <button onClick={() => navigate("/")}>Voltar à Home</button>
+      <div className="button-container">
+        <button onClick={() => navigate("/")} className="botao-voltar">
+          Voltar à Home
+        </button>
       </div>
 
       {seriesList.map((serie) => (
         <div key={serie.fld_id} className="series-card">
           <h2 onClick={() => toggleSeries(serie.fld_id)}>
-            {serie.name}
+            {serie.name} ({episodes[serie.fld_id]?.length || 0} episódios)
           </h2>
           {expanded[serie.fld_id] && (
             <div className="episodes-list">

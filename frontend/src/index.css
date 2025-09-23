@@ -24,16 +24,15 @@ a {
 ============================ */
 h1, h2, h3 {
   color: #ffffff;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
   margin: 2rem 0;
   font-size: 2.5rem;
 }
 
 h2 {
-  text-align: center;
   margin: 1.5rem 0;
   font-size: 2rem;
   cursor: pointer;
@@ -45,15 +44,17 @@ h2:hover {
 }
 
 /* ============================
-   Botão Voltar à Home
+   Botões (centralizados e uniformes)
 ============================ */
-.voltar-container {
+.button-container {
   display: flex;
   justify-content: center;
+  gap: 1rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
-.botao-voltar {
+.button, .botao-voltar {
   padding: 0.8rem 1.5rem;
   border-radius: 6px;
   background-color: #1f1f1f;
@@ -64,7 +65,7 @@ h2:hover {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.botao-voltar:hover {
+.button:hover, .botao-voltar:hover {
   background-color: #007bff;
   transform: translateY(-2px);
 }
@@ -124,6 +125,10 @@ h2:hover {
     padding: 1rem;
     margin: 1rem 0.5rem;
   }
+
+  .button-container {
+    gap: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -135,7 +140,7 @@ h2:hover {
     font-size: 1.2rem;
   }
   
-  .botao-voltar {
+  .button, .botao-voltar {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
   }

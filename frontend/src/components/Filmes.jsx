@@ -17,11 +17,15 @@ export default function Filmes() {
   };
 
   return (
-    <div className="page-container">
+    <div className="container">
       <h1>Filmes</h1>
-      <button onClick={voltarHome} className="botao-voltar">
-        Voltar à Home
-      </button>
+
+      <div className="button-container">
+        <button onClick={voltarHome} className="botao-voltar">
+          Voltar à Home
+        </button>
+      </div>
+
       <ul className="lista-videos">
         {filmes.map((filme) => (
           <li key={filme.id}>
