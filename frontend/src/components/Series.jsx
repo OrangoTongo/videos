@@ -1,36 +1,29 @@
 import { useState, useEffect } from "react";
-import { getSeries } from "../api";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = "https://videos-m0k8.onrender.com/api"; // seu backend no Render
+
 export default function Series() {
-  const [series, setSeries] = useState([]);
-  const [expandedFolders, setExpandedFolders] = useState({});
+  const [seriesList, setSeriesList] = useState([]);
+  const [expanded, setExpanded] = useState({});
+  const [episodes, setEpisodes] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchSeries() {
-      try {
-        const data = await getSeries();
-        setSeries(data);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-    fetchSeries();
+    fetch(`${BASE_URL}/series`)
+      .then((res) => res.json())
+      .then(setSeriesList)
+      .catch(console.error);
   }, []);
 
-  // Agrupa os episódios pelo fld_id (cada "série") e pega o nome da série
-  const groupedSeries = series.reduce((acc, ep) => {
-    if (!acc[ep.fld_id]) acc[ep.fld_id] = { name: ep.name, episodes: [] };
-    acc[ep.fld_id].episodes.push(ep);
-    return acc;
-  }, {});
-
-  const toggleFolder = (fld_id) => {
-    setExpandedFolders((prev) => ({
-      ...prev,
-      [fld_id]: !prev[fld_id],
-    }));
+  const toggleSeries = async (fld_id) => {
+    if (!expanded[fld_id]) {
+      // busca episódios da série
+      const res = await fetch(`${BASE_URL}/series/${fld_id}/episodes`);
+      const data = await res.json();
+      setEpisodes((prev) => ({ ...prev, [fld_id]: data }));
+    }
+    setExpanded((prev) => ({ ...prev, [fld_id]: !prev[fld_id] }));
   };
 
   return (
@@ -39,15 +32,14 @@ export default function Series() {
         <button onClick={() => navigate("/")}>Voltar à Home</button>
       </div>
 
-      {Object.entries(groupedSeries).map(([fld_id, seriesData]) => (
-        <div key={fld_id} className="series-card">
-          <h2 onClick={() => toggleFolder(fld_id)}>
-            {seriesData.name} ({seriesData.episodes.length} episódios)
+      {seriesList.map((serie) => (
+        <div key={serie.fld_id} className="series-card">
+          <h2 onClick={() => toggleSeries(serie.fld_id)}>
+            {serie.name}
           </h2>
-
-          {expandedFolders[fld_id] && (
+          {expanded[serie.fld_id] && (
             <div className="episodes-list">
-              {seriesData.episodes.map((ep) => (
+              {episodes[serie.fld_id]?.map((ep) => (
                 <div key={ep.id} className="episode-item">
                   {ep.title}
                 </div>

@@ -1,8 +1,10 @@
+// routes/seriesRouter.js
 import express from "express";
-import { getSeries } from "../controllers/seriesController.js";
+import { getSeriesList, getEpisodesByFolder } from "../controllers/seriesController.js";
 
 const router = express.Router();
 
-router.get("/", getSeries);
+router.get("/", getSeriesList);          // lista de séries
+router.get("/:fld_id/episodes", getEpisodesByFolder); // episódios de cada série
 
 export default router;
