@@ -1,24 +1,36 @@
 import React, { useEffect, useState } from "react";
-import CardItem from "../components/CardItem.jsx";
-import { getSeries } from "../api.js";
+import { useNavigate } from "react-router-dom";
+import { getSeries } from "../api";
 
 export default function Series() {
   const [series, setSeries] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getSeries()
-      .then(data => setSeries(data))
-      .catch(err => console.error(err));
+      .then(setSeries)
+      .catch((err) => console.error("Erro ao buscar séries:", err));
   }, []);
 
+  const voltarHome = () => {
+    navigate("/"); // ou "/inicio"
+  };
+
   return (
-    <div>
-      <h2>Séries</h2>
-      <div className="grid-container">
-        {series.map(s => (
-          <CardItem key={s.id} title={s.title} link={s.link} />
+    <div className="page-container">
+      <h1>Séries</h1>
+      <button onClick={voltarHome} className="botao-voltar">
+        Voltar à Home
+      </button>
+      <ul className="lista-videos">
+        {series.map((serie) => (
+          <li key={serie.id}>
+            <a href={serie.link} target="_blank" rel="noreferrer">
+              {serie.title}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

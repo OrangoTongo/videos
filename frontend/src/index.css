@@ -69,6 +69,27 @@ h3 {
 }
 
 /* ============================
+   Botão Voltar à Home
+============================ */
+.botao-voltar {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  background-color: #1f1f1f;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #444;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.botao-voltar:hover {
+  background-color: #007bff;
+  transform: translateY(-2px);
+}
+
+/* ============================
    Grid de cards
 ============================ */
 .grid-container {
@@ -162,5 +183,10 @@ h3 {
   .card a {
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
+  }
+  
+  .botao-voltar {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }
