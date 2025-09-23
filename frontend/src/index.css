@@ -1,6 +1,6 @@
-/* ============================
-   Reset e estilos globais
-============================ */
+/* index.css - versão moderna e responsiva */
+
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -8,148 +8,131 @@
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body {
-  background-color: #121212;
-  color: #e0e0e0;
-  line-height: 1.6;
+/* Container geral */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #121212; /* fundo escuro */
+  color: #ffffff;
+  min-height: 100vh;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* ============================
-   Cabeçalhos
-============================ */
-h1, h2, h3 {
+/* Títulos */
+h1, h2 {
+  margin-bottom: 20px;
   color: #ffffff;
   text-align: center;
 }
 
-h1 {
-  margin: 2rem 0;
-  font-size: 2.5rem;
-}
-
-h2 {
-  margin: 1.5rem 0;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-h2:hover {
-  color: #007bff;
-}
-
-/* ============================
-   Botões (centralizados e uniformes)
-============================ */
+/* Botão voltar */
 .button-container {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
 }
 
-.button, .botao-voltar {
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+.botao-voltar {
   background-color: #1f1f1f;
   color: #ffffff;
-  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
   cursor: pointer;
-  border: 1px solid #444;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
 }
 
-.button:hover, .botao-voltar:hover {
-  background-color: #007bff;
-  transform: translateY(-2px);
+.botao-voltar:hover {
+  background-color: #333;
 }
 
-/* ============================
-   Cards de séries e episódios
-============================ */
-.series-card {
-  background-color: #1f1f1f;
+/* Lista de vídeos - grid responsivo */
+.lista-videos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 1000px;
+  list-style: none;
+}
+
+.lista-videos li a {
+  color: #bb86fc;
+  text-decoration: none;
+  padding: 15px;
   border-radius: 10px;
-  margin: 1rem auto;
+  background-color: #1e1e1e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-weight: 500;
+}
+
+.lista-videos li a:hover {
+  background-color: #333;
+}
+
+/* Séries - cards responsivos */
+.series-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   max-width: 800px;
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
 }
 
 .series-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+  background-color: #2c2c2c;
+}
+
+.series-card h2 {
   cursor: pointer;
+  font-size: 1.2rem;
+  color: #bb86fc;
 }
 
 .episodes-list {
-  margin-top: 1rem;
-  padding-left: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .episode-item {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #333;
-}
-
-/* ============================
-   Container principal
-============================ */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border-radius: 8px;
   text-align: center;
+  transition: background-color 0.2s ease;
+  font-size: 0.9rem;
 }
 
-/* ============================
-   Responsividade
-============================ */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.6rem;
-  }
-  
-  .series-card {
-    padding: 1rem;
-    margin: 1rem 0.5rem;
-  }
-
-  .button-container {
-    gap: 0.8rem;
-  }
+.episode-item:hover {
+  background-color: #3a3a3a;
 }
 
-@media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
+/* Responsividade */
+@media (max-width: 600px) {
+  .botao-voltar {
+    width: 100%;
+    text-align: center;
   }
-  
-  h2 {
-    font-size: 1.2rem;
+
+  .lista-videos {
+    grid-template-columns: 1fr;
   }
-  
-  .button, .botao-voltar {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-  
-  .series-card {
-    padding: 0.8rem;
-  }
-  
-  .episode-item {
-    font-size: 0.9rem;
+
+  .episodes-list {
+    grid-template-columns: 1fr;
   }
 }
