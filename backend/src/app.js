@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(cors());
 
 
-app.use("//inicio", indexRouter);
+app.use("/inicio", indexRouter);
 app.use("/series", seriesRouter);
 app.use("/filmes", filmesRouter);
 
