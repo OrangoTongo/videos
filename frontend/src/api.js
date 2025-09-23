@@ -1,4 +1,5 @@
-const BASE_URL = "http://localhost:5000"; // ajuste para URL do backend no Render
+const BASE_URL = process.env.SITE_URL;
+
 
 export async function getFilmes() {
   const res = await fetch(`${BASE_URL}/filmes`);
