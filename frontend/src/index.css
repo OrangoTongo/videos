@@ -7,6 +7,7 @@
   background-color: #121212;
   color: #ffffff;
   min-height: 100vh;
+  font-size: 0.9rem; /* 🔹 diminui o tamanho da letra em Series */
 }
 
 /* Botão voltar */
@@ -53,6 +54,7 @@
   min-height: 200px;
   position: relative;
   overflow: hidden;
+  /* 🔹 Removido qualquer borda branca */
 }
 
 /* Títulos */
@@ -62,6 +64,7 @@
   text-align: center;
   word-break: break-word;
   overflow-wrap: break-word;
+  font-size: 1rem; /* ajusta título para não ficar gigante */
 }
 
 /* Links dentro dos cards */
