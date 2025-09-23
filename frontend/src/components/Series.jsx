@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getSeries } from "../api"; // sua função que busca /api/series
+import { getSeries } from "../api";
 import { useNavigate } from "react-router-dom";
 
 export default function Series() {
@@ -19,10 +19,10 @@ export default function Series() {
     fetchSeries();
   }, []);
 
-  // Agrupa os episódios pelo fld_id (cada "série")
+  // Agrupa os episódios pelo fld_id (cada "série") e pega o nome da série
   const groupedSeries = series.reduce((acc, ep) => {
-    if (!acc[ep.fld_id]) acc[ep.fld_id] = [];
-    acc[ep.fld_id].push(ep);
+    if (!acc[ep.fld_id]) acc[ep.fld_id] = { name: ep.name, episodes: [] };
+    acc[ep.fld_id].episodes.push(ep);
     return acc;
   }, {});
 
@@ -39,18 +39,15 @@ export default function Series() {
         <button onClick={() => navigate("/")}>Voltar à Home</button>
       </div>
 
-      {Object.entries(groupedSeries).map(([fld_id, episodes]) => (
-        <div
-          key={fld_id}
-          className="series-card"
-        >
+      {Object.entries(groupedSeries).map(([fld_id, seriesData]) => (
+        <div key={fld_id} className="series-card">
           <h2 onClick={() => toggleFolder(fld_id)}>
-            Série {fld_id} ({episodes.length} episódios)
+            {seriesData.name} ({seriesData.episodes.length} episódios)
           </h2>
 
           {expandedFolders[fld_id] && (
             <div className="episodes-list">
-              {episodes.map((ep) => (
+              {seriesData.episodes.map((ep) => (
                 <div key={ep.id} className="episode-item">
                   {ep.title}
                 </div>
