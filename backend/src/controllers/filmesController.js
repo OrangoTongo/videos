@@ -1,3 +1,5 @@
+import pool from "../db.js";
+
 export const getFilmes = async (req, res) => {
   try {
     const result = await pool.query(
