@@ -1,9 +1,7 @@
-import pool from "../db.js";
-
 export const getSeries = async (req, res) => {
   try {
     const result = await pool.query(
-      "SELECT id, titulo, link FROM series ORDER BY titulo ASC"
+      "SELECT id, title, link FROM series ORDER BY title ASC"
     );
     res.json(result.rows);
   } catch (err) {
