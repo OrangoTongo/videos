@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = "https://videos-m0k8.onrender.com/api"; // seu backend
+const BASE_URL = "https://videos-m0k8.onrender.com/api";
 
 export default function Series() {
   const [seriesList, setSeriesList] = useState([]);
@@ -39,13 +39,16 @@ export default function Series() {
             <h2 onClick={() => toggleSeries(serie.fld_id)}>
               {serie.name} ({episodes[serie.fld_id]?.length || 0} episódios)
             </h2>
+
             {expanded[serie.fld_id] && (
-              <div className="episodes-list">
-                {episodes[serie.fld_id]?.map((ep) => (
-                  <div key={ep.id} className="episode-item">
-                    {ep.title}
-                  </div>
-                ))}
+              <div className="episodes-wrapper">
+                <div className="episodes-list">
+                  {episodes[serie.fld_id]?.map((ep) => (
+                    <div key={ep.id} className="episode-item">
+                      {ep.title}
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
           </div>
