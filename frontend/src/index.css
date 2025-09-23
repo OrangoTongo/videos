@@ -1,4 +1,4 @@
-/* index.css - versão moderna e responsiva */
+/* index.css */
 
 /* Reset básico */
 * {
@@ -20,8 +20,8 @@
 }
 
 /* Títulos */
-h1, h2 {
-  margin-bottom: 20px;
+h1, h2, h3 {
+  margin-bottom: 15px;
   color: #ffffff;
   text-align: center;
 }
@@ -29,7 +29,7 @@ h1, h2 {
 /* Botão voltar */
 .button-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center; /* centraliza */
   width: 100%;
   max-width: 800px;
   margin-bottom: 20px;
@@ -51,56 +51,54 @@ h1, h2 {
 }
 
 /* Lista de vídeos - grid responsivo */
-.lista-videos {
+.lista-videos, .series-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
   width: 100%;
   max-width: 1000px;
   list-style: none;
 }
 
-.lista-videos li a {
-  color: #bb86fc;
-  text-decoration: none;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #1e1e1e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s ease;
-  text-align: center;
-  font-weight: 500;
-}
-
-.lista-videos li a:hover {
-  background-color: #333;
-}
-
-/* Séries - cards responsivos */
-.series-card {
+/* Cards de filmes e séries */
+.series-card, .card {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 800px;
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
-  margin-bottom: 20px;
   transition: all 0.3s ease;
 }
 
-.series-card:hover {
+.series-card:hover, .card:hover {
   background-color: #2c2c2c;
 }
 
-.series-card h2 {
-  cursor: pointer;
-  font-size: 1.2rem;
+.series-card h2, .card h3 {
   color: #bb86fc;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
 }
 
+/* Links dentro dos cards */
+.lista-videos li a, .card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #1e1e1e;
+  color: #bb86fc;
+  text-decoration: none;
+  border-radius: 8px;
+  text-align: center;
+  transition: background-color 0.2s ease;
+}
+
+.lista-videos li a:hover, .card a:hover {
+  background-color: #333;
+}
+
+/* Lista de episódios */
 .episodes-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -114,7 +112,6 @@ h1, h2 {
   border-radius: 8px;
   text-align: center;
   transition: background-color 0.2s ease;
-  font-size: 0.9rem;
 }
 
 .episode-item:hover {
@@ -123,12 +120,11 @@ h1, h2 {
 
 /* Responsividade */
 @media (max-width: 600px) {
-  .botao-voltar {
-    width: 100%;
-    text-align: center;
+  .button-container {
+    justify-content: center;
   }
 
-  .lista-videos {
+  .lista-videos, .series-list {
     grid-template-columns: 1fr;
   }
 
@@ -136,19 +132,3 @@ h1, h2 {
     grid-template-columns: 1fr;
   }
 }
-/* links dentro dos cards */
-.lista-videos-link {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 8px 15px;
-  background-color: #1e1e1e;
-  color: #bb86fc;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-}
-
-.lista-videos-link:hover {
-  background-color: #333;
-}
-
