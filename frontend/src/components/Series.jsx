@@ -12,16 +12,22 @@ export default function Series() {
   useEffect(() => {
     fetch(`${BASE_URL}/series`)
       .then((res) => res.json())
-      .then(setSeriesList)
+      .then(async (series) => {
+        setSeriesList(series);
+
+        // 🔹 já busca episódios de cada série
+        const episodesData = {};
+        for (const serie of series) {
+          const res = await fetch(`${BASE_URL}/series/${serie.fld_id}/episodes`);
+          const data = await res.json();
+          episodesData[serie.fld_id] = data;
+        }
+        setEpisodes(episodesData);
+      })
       .catch(console.error);
   }, []);
 
-  const toggleSeries = async (fld_id) => {
-    if (!expanded[fld_id]) {
-      const res = await fetch(`${BASE_URL}/series/${fld_id}/episodes`);
-      const data = await res.json();
-      setEpisodes((prev) => ({ ...prev, [fld_id]: data }));
-    }
+  const toggleSeries = (fld_id) => {
     setExpanded((prev) => ({ ...prev, [fld_id]: !prev[fld_id] }));
   };
 

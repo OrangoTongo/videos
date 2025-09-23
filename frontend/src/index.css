@@ -7,7 +7,7 @@
   background-color: #121212;
   color: #ffffff;
   min-height: 100vh;
-  font-size: 0.9rem; /* 🔹 diminui o tamanho da letra em Series */
+  font-size: 0.9rem;
 }
 
 /* Botão voltar */
@@ -41,20 +41,22 @@
   gap: 20px;
   width: 100%;
   max-width: 1000px;
+  margin: 0;
+  padding: 0;
+  list-style: none; /* 🔹 remove os pontos */
 }
 
-/* Cards de filmes e séries */
+/* Cards */
 .series-card, .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* mantém altura uniforme */
+  justify-content: space-between;
   background-color: #1e1e1e;
   padding: 20px;
   border-radius: 12px;
   min-height: 200px;
   position: relative;
   overflow: hidden;
-  /* 🔹 Removido qualquer borda branca */
 }
 
 /* Títulos */
@@ -64,15 +66,16 @@
   text-align: center;
   word-break: break-word;
   overflow-wrap: break-word;
-  font-size: 1rem; /* ajusta título para não ficar gigante */
+  font-size: 1rem;
+  cursor: pointer;
 }
 
-/* Links dentro dos cards */
+/* Links nos filmes */
 .lista-videos li a, .card a {
   display: inline-block;
   margin-top: 10px;
   padding: 10px 15px;
-  background-color: #1e1e1e;
+  background-color: #2a2a2a;
   color: #bb86fc;
   text-decoration: none;
   border-radius: 8px;
@@ -81,13 +84,13 @@
 }
 
 .lista-videos li a:hover, .card a:hover {
-  background-color: #333;
+  background-color: #3a3a3a;
 }
 
-/* Episódios em container fixo para não alterar a altura do grid */
+/* Episódios */
 .episodes-wrapper {
-  max-height: 150px; /* altura fixa */
-  overflow-y: auto; /* scroll se tiver muitos episódios */
+  max-height: 150px;
+  overflow-y: auto;
   margin-top: 10px;
 }
 
@@ -107,14 +110,4 @@
 
 .episode-item:hover {
   background-color: #3a3a3a;
-}
-
-/* Responsividade */
-@media (max-width: 600px) {
-  .lista-videos, .series-list {
-    grid-template-columns: 1fr;
-  }
-  .episodes-list {
-    grid-template-columns: 1fr;
-  }
 }
