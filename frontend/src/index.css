@@ -1,4 +1,10 @@
 /* Container geral */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #121212; /* ou a cor que preferir */
+}
+
 .container {
   display: flex;
   flex-direction: column;

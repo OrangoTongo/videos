@@ -43,7 +43,7 @@ export default function Series() {
         {seriesList.map((serie) => (
           <div key={serie.fld_id} className="series-card">
             <h2 onClick={() => toggleSeries(serie.fld_id)}>
-              {serie.name} ({episodes[serie.fld_id]?.length || 0} episódios)
+              {serie.name}
             </h2>
 
             {expanded[serie.fld_id] && (
