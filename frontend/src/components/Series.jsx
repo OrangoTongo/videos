@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const BASE_URL = process.env.DATABASE_URL;
+const BASE_URL = process.env.BASE_URL;
 
 export default function Series() {
   const [seriesList, setSeriesList] = useState([]);
