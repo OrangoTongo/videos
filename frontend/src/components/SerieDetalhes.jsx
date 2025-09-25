@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-const BASE_URL = process.env.DATABASE_URL;
+const BASE_URL = process.env.BASE_URL;
 
 export default function SerieDetalhes() {
   const { fld_id } = useParams();

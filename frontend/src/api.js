@@ -1,5 +1,5 @@
 // API base URL: mesmo domínio
-const BASE_URL = "";
+const BASE_URL = process.env.BASE_URL;
 
 // Buscar séries
 export async function getSeries() {
