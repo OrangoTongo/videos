@@ -18,7 +18,7 @@ export const getEpisodesByFolder = async (req, res) => {
   try {
     const { fld_id } = req.params;
     const result = await pool.query(
-      "SELECT id, title, link FROM series WHERE fld_id = $1 ORDER BY title ASC",
+      "SELECT id, title, link, name FROM series WHERE fld_id = $1 ORDER BY title ASC",
       [fld_id]
     );
     res.json(result.rows);
