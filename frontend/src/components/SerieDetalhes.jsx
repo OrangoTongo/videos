@@ -14,7 +14,7 @@ fetch(`${BASE_URL}/api/series/${fld_id}/episodes`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length > 0) {
-          setSerieName(data[0].name); // pega o nome da série do primeiro episódio
+          setSerieName(data[0].name); 
           setEpisodes(data);
         }
       })
